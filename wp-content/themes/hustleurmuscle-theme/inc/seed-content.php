@@ -452,7 +452,7 @@ function hum_run_full_seed() {
 		array(
 			array(
 				'title'     => 'SAGAR SOMA',
-				'thumbnail' => 'assets/images/contact-trainer.jpg',
+				'thumbnail' => 'assets/images/sagar-soma.png',
 				'meta'      => array(
 					'trainer_role'      => 'Head Coach & Founder',
 					'trainer_bio'       => 'Specialist in Hypertrophy, Body Recomposition & Biomechanics.',

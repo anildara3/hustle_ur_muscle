@@ -93,7 +93,7 @@ $blog_url      = hustleurmuscle_get_page_url( array( 'blog' ) );
 
 						<!-- Author Box -->
 						<div class="post-author-box">
-							<img src="<?php echo esc_url( $theme_uri . '/assets/images/about-2.jpg' ); ?>" alt="Coach Sagar Soma" class="post-author-avatar">
+							<img src="<?php echo esc_url( $theme_uri . '/assets/images/sagar-soma.png' ); ?>" alt="Coach Sagar Soma" class="post-author-avatar">
 							<div>
 								<h4 class="trainer-team-name text-white mb-1">COACH SAGAR SOMA</h4>
 								<span class="text-danger fw-bold small text-uppercase">Head Coach &amp; Founder — Hustle Ur Muscle</span>

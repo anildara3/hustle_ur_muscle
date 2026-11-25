@@ -31,7 +31,7 @@ $blog_url      = hustleurmuscle_get_page_url( array( 'blog' ) );
 
 		<!-- Author Bio Widget -->
 		<div class="blog-sidebar-widget text-center" data-aos="fade-left" data-aos-delay="100">
-			<img src="<?php echo esc_url( $theme_uri . '/assets/images/about-2.jpg' ); ?>" alt="Coach Sagar Soma" class="rounded-circle mb-3 border border-3 border-danger avatar-100">
+			<img src="<?php echo esc_url( $theme_uri . '/assets/images/sagar-soma.png' ); ?>" alt="Coach Sagar Soma" class="rounded-circle mb-3 border border-3 border-danger avatar-100">
 			<h4 class="trainer-team-name mb-1">COACH SAGAR SOMA</h4>
 			<span class="text-danger fw-bold small text-uppercase">Founder &amp; Head Trainer</span>
 			<p class="text-muted small mt-2 mb-3">

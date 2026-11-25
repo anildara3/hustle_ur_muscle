@@ -264,7 +264,7 @@ if ( '' === trim( wp_strip_all_tags( $content_html ) ) ) {
 
 						<!-- Coach Box -->
 						<div class="pt-4 border-top border-secondary text-center">
-							<img src="<?php echo esc_url( $theme_uri . '/assets/images/about-2.jpg' ); ?>" alt="Coach Sagar Soma" class="rounded-circle border border-2 border-danger mb-2 avatar-70">
+							<img src="<?php echo esc_url( $theme_uri . '/assets/images/sagar-soma.png' ); ?>" alt="Coach Sagar Soma" class="rounded-circle border border-2 border-danger mb-2 avatar-70">
 							<h5 class="text-white mb-0 fw-bold">COACH SAGAR SOMA</h5>
 							<small class="text-danger text-uppercase fw-bold">Program Director</small>
 							<div class="mt-3">

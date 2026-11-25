@@ -93,7 +93,7 @@ $youtube_url   = hustleurmuscle_get_option( 'hum_youtube_url', 'https://www.yout
 							<img src="<?php echo esc_url( hum_get_image_url( 'about_story_img_1', $page_id, 'assets/images/about-1.jpg' ) ); ?>" alt="Coach Sagar Soma Workout" class="about-img-main">
 						</div>
 						<div class="about-img-overlay-card">
-							<img src="<?php echo esc_url( hum_get_image_url( 'about_story_img_2', $page_id, 'assets/images/about-2.jpg' ) ); ?>" alt="Coach Sagar Soma" class="about-img-sub">
+							<img src="<?php echo esc_url( hum_get_image_url( 'about_story_img_2', $page_id, 'assets/images/sagar-soma.png' ) ); ?>" alt="Coach Sagar Soma" class="about-img-sub">
 						</div>
 						<div class="experience-badge">
 							<div class="experience-years count-number" data-count="12">12</div>
@@ -195,7 +195,7 @@ $youtube_url   = hustleurmuscle_get_option( 'hum_youtube_url', 'https://www.yout
 
 				if ( $trainer_query->have_posts() ) :
 					$delay      = 200;
-					$t_fallback = array( 'contact-trainer.jpg', 'trainer-2.jpg', 'trainer-3.jpg' );
+					$t_fallback = array( 'sagar-soma.png', 'trainer-2.jpg', 'trainer-3.jpg' );
 					$idx        = 0;
 					while ( $trainer_query->have_posts() ) :
 						$trainer_query->the_post();

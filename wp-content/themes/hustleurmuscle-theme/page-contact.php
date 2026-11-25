@@ -103,7 +103,7 @@ $default_map   = 'https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d193595.1
 					<div class="coach-contact-card">
 
 						<div class="coach-contact-header">
-							<img src="<?php echo esc_url( hum_get_image_url( 'contact_coach_photo', $page_id, 'assets/images/about-2.jpg' ) ); ?>" alt="Coach Sagar Soma" class="coach-avatar-lg">
+							<img src="<?php echo esc_url( hum_get_image_url( 'contact_coach_photo', $page_id, 'assets/images/sagar-soma.png' ) ); ?>" alt="Coach Sagar Soma" class="coach-avatar-lg">
 							<div class="coach-title-wrap">
 								<h3>SAGAR SOMA</h3>
 								<span>Founder &amp; Head Coach</span>

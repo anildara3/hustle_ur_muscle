@@ -105,7 +105,7 @@ $first_slide        = $slides[0];
 						</div>
 
 						<div class="about-img-overlay-card">
-							<img src="<?php echo esc_url( hum_get_image_url( 'home_about_img_2', $front_id, 'assets/images/about-2.jpg' ) ); ?>" alt="Personal Trainer Coach" class="about-img-sub">
+							<img src="<?php echo esc_url( hum_get_image_url( 'home_about_img_2', $front_id, 'assets/images/sagar-soma.png' ) ); ?>" alt="Coach Sagar Soma" class="about-img-sub">
 						</div>
 
 						<?php $exp_years = hum_get_field( 'home_about_years', $front_id, '12' ); ?>
@@ -415,7 +415,7 @@ $first_slide        = $slides[0];
 			<div class="row g-0 align-items-stretch">
 
 				<div class="col-lg-6" data-aos="fade-right">
-					<img src="<?php echo esc_url( hum_get_image_url( 'home_contact_img', $front_id, 'assets/images/contact-trainer.jpg' ) ); ?>" alt="Coach Sagar Soma Hustle Ur Muscle" class="contact-img-side">
+					<img src="<?php echo esc_url( hum_get_image_url( 'home_contact_img', $front_id, 'assets/images/sagar-soma.png' ) ); ?>" alt="Coach Sagar Soma Hustle Ur Muscle" class="contact-img-side">
 				</div>
 
 				<div class="col-lg-6 d-flex align-items-center" data-aos="fade-left">
