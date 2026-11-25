@@ -1,0 +1,15 @@
+# Ignore WordPress core files, wp-config.php, and root files
+/*
+
+# Track .gitignore and wp-content/
+!.gitignore
+!wp-content/
+
+# Exclude temporary/cache/log/OS files inside wp-content
+wp-content/upgrade/
+wp-content/upgrade-temp-backup/
+wp-content/cache/
+wp-content/debug.log
+*.log
+.DS_Store
+Thumbs.db

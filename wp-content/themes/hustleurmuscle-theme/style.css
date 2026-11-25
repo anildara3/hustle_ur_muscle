@@ -1,0 +1,117 @@
+/*
+Theme Name: Hustle Ur Muscle
+Theme URI: https://hustleurmuscle.in
+Author: Coach Sagar Soma
+Author URI: https://hustleurmuscle.in
+Description: Custom WordPress theme for Hustle Ur Muscle by Coach Sagar Soma — exact conversion of the Hustle Ur Muscle fitness & personal training design.
+Version: 1.1.0
+Requires at least: 6.0
+Tested up to: 6.7
+Requires PHP: 7.4
+License: GNU General Public License v2 or later
+License URI: https://www.gnu.org/licenses/gpl-2.0.html
+Text Domain: hustleurmuscle
+*/
+
+/* WordPress admin bar offset for fixed header */
+body.admin-bar .main-header {
+  top: 32px;
+}
+
+@media screen and (max-width: 782px) {
+  body.admin-bar .main-header {
+    top: 46px;
+  }
+}
+
+/* Core WordPress alignment & caption helpers */
+.alignleft {
+  float: left;
+  margin-right: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.alignright {
+  float: right;
+  margin-left: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.aligncenter {
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 1rem;
+}
+
+.wp-caption {
+  max-width: 100%;
+}
+
+.wp-caption-text {
+  font-size: 0.85rem;
+  color: #6c757d;
+  margin-top: 0.4rem;
+}
+
+/* WordPress pagination styling matching .pagination-fitness */
+.pagination-fitness .page-numbers {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-width: 42px;
+  height: 42px;
+  padding: 0 14px;
+  margin: 0 4px;
+  border-radius: 4px;
+  background: #ffffff;
+  border: 1px solid #dee2e6;
+  color: #16181d;
+  font-family: var(--font-heading);
+  font-weight: 700;
+  font-size: 0.95rem;
+  transition: all var(--transition-fast);
+}
+
+.pagination-fitness .page-numbers.current,
+.pagination-fitness .page-numbers:hover {
+  background: var(--color-primary);
+  border-color: var(--color-primary);
+  color: #ffffff;
+}
+
+/* Contact Form 7 seamless styling inside dark & light fitness sections */
+.wpcf7-form-control-wrap {
+  display: block;
+  width: 100%;
+}
+
+.wpcf7-not-valid-tip {
+  font-size: 0.78rem;
+  color: var(--color-primary);
+  margin-top: 4px;
+}
+
+.wpcf7-response-output {
+  margin: 16px 0 0 !important;
+  padding: 12px 16px !important;
+  border-radius: 4px;
+  font-size: 0.88rem;
+}
+
+.wpcf7 form.sent .wpcf7-response-output {
+  border-color: #198754 !important;
+  background: rgba(25, 135, 84, 0.14);
+  color: #d1fae5;
+}
+
+.wpcf7 form.invalid .wpcf7-response-output,
+.wpcf7 form.failed .wpcf7-response-output {
+  border-color: var(--color-primary) !important;
+  background: rgba(255, 51, 68, 0.14);
+  color: #ffe4e6;
+}
+
+.wpcf7-list-item {
+  margin: 0 !important;
+}
