@@ -104,19 +104,27 @@ $crumb_curr = isset( $args['crumb'] ) ? $args['crumb'] : 'BLOG';
 
 					<!-- Pagination -->
 					<?php
-					$pagination = paginate_links(
+					$pagination_links = paginate_links(
 						array(
-							'type'      => 'list',
+							'type'      => 'array',
 							'prev_text' => '<i class="fa-solid fa-arrow-left me-1"></i> PREV',
 							'next_text' => 'NEXT <i class="fa-solid fa-arrow-right ms-1"></i>',
 						)
 					);
-					if ( $pagination ) :
+					if ( ! empty( $pagination_links ) ) :
 						?>
-						<nav aria-label="Blog pagination" class="mt-4">
-							<div class="pagination-fitness">
-								<?php echo wp_kses_post( $pagination ); ?>
-							</div>
+						<nav aria-label="Blog pagination">
+							<ul class="pagination pagination-fitness">
+								<?php foreach ( $pagination_links as $page_link ) : ?>
+									<?php
+									$is_active = false !== strpos( $page_link, 'current' );
+									$styled    = str_replace( 'page-numbers', 'page-link', $page_link );
+									?>
+									<li class="page-item<?php echo $is_active ? ' active' : ''; ?>">
+										<?php echo wp_kses_post( $styled ); ?>
+									</li>
+								<?php endforeach; ?>
+							</ul>
 						</nav>
 					<?php endif; ?>
 				</div>

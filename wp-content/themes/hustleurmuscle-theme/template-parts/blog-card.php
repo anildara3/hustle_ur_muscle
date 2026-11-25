@@ -31,7 +31,7 @@ $thumb_url  = has_post_thumbnail() ? get_the_post_thumbnail_url( get_the_ID(), '
 				<a href="<?php the_permalink(); ?>"><?php echo esc_html( strtoupper( get_the_title() ) ); ?></a>
 			</h3>
 			<p class="blog-excerpt">
-				<?php echo esc_html( wp_trim_words( get_the_excerpt(), 18, '...' ) ); ?>
+				<?php echo esc_html( has_excerpt() ? get_the_excerpt() : wp_trim_words( get_the_excerpt(), 24, '...' ) ); ?>
 			</p>
 			<a href="<?php the_permalink(); ?>" class="blog-read-more">
 				<?php echo esc_html( $cta_text ); ?> <i class="fa-solid fa-arrow-right"></i>
