@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'HUM_SEED_VERSION', '1.1.0' );
+define( 'HUM_SEED_VERSION', '1.3.0' );
 
 /**
  * Helper: attach a theme image file into the WP Media Library once and return attachment ID.
@@ -484,7 +484,84 @@ function hum_run_full_seed() {
 		)
 	);
 
-	// 8. Pre-fill default ACF page fields (non-destructive: only sets if empty)
+	// 8. Seed Footer (hum_footer CPT)
+	hum_seed_cpt_if_empty(
+		'hum_footer',
+		array(
+			array(
+				'title' => 'Main Site Footer',
+				'meta'  => array(
+					'footer_logo'            => 'ASSET:assets/images/logo-transparent.png',
+					'footer_banner_heading'  => "JOIN HUSTLE UR MUSCLE TO\nSTART A NEW LIFE",
+					'footer_founder_label'   => 'HEAD COACH & FOUNDER:',
+					'footer_founder_name'    => 'SAGAR SOMA',
+					'footer_cta_text'        => 'JOIN NOW',
+					'footer_cta_url'         => '',
+					'footer_about_title'     => 'ABOUT HUSTLE UR MUSCLE',
+					'footer_about_text'      => 'Hustle Ur Muscle, founded by Coach Sagar Soma, is dedicated to scientific strength conditioning, body transformation, and empowering individuals with peak athletic discipline.',
+					'footer_email'           => 'info@hustleurmuscle.in',
+					'footer_phone'           => '9948660025',
+					'footer_location'        => 'Hustle Ur Muscle Training Club',
+					'footer_social_title'    => 'SOCIAL',
+					'footer_facebook_url'    => 'https://www.facebook.com/hustleurmuscle/',
+					'footer_instagram_url'   => 'https://www.instagram.com/ssagarsomahustleurmuscle/',
+					'footer_twitter_url'     => 'https://twitter.com',
+					'footer_youtube_url'     => 'https://youtube.com',
+					'footer_links_title'     => 'QUICK LINKS',
+					'footer_quick_links'     => "Home | /\nAbout Us | /about/\nPrograms | /programs/\nFAQs | /faqs/\nBlog | /blog/\nContact | /contact/",
+					'footer_instagram_title' => 'INSTAGRAM',
+					'footer_reel_1'          => 'https://www.instagram.com/reel/DZozDKoi8xf/?hvrq=bzN0cTdjYjM2a2d4',
+					'footer_reel_1_img'      => 'ASSET:assets/images/hero-bg.jpg',
+					'footer_reel_2'          => 'https://www.instagram.com/reel/DZP9VWWS_ae/?jplx=NXNwZDlxNm1oeWlj',
+					'footer_reel_2_img'      => 'ASSET:assets/images/trainer-2.jpg',
+					'footer_reel_3'          => 'https://www.instagram.com/reel/DLKqflwhSqb/?avpt=MWExNzBvazE2czBvYg==',
+					'footer_reel_3_img'      => 'ASSET:assets/images/about-2.jpg',
+					'footer_reel_4'          => 'https://www.instagram.com/reel/DZozDKoi8xf/?hvrq=bzN0cTdjYjM2a2d4',
+					'footer_reel_4_img'      => 'ASSET:assets/images/banner-gym.jpg',
+					'footer_reel_5'          => 'https://www.instagram.com/reel/DZP9VWWS_ae/?jplx=NXNwZDlxNm1oeWlj',
+					'footer_reel_5_img'      => 'ASSET:assets/images/trainer-3.jpg',
+					'footer_reel_6'          => 'https://www.instagram.com/reel/DLKqflwhSqb/?avpt=MWExNzBvazE2czBvYg==',
+					'footer_reel_6_img'      => 'ASSET:assets/images/contact-trainer.jpg',
+					'footer_copyright'       => 'Hustle Ur Muscle © {year}. All rights reserved. Directed by Coach Sagar Soma.',
+					'footer_privacy_label'   => 'Privacy Policy',
+					'footer_privacy_url'     => '',
+					'footer_terms_label'     => 'Terms & Conditions',
+					'footer_terms_url'       => '',
+				),
+			),
+		)
+	);
+
+	// 9. Seed Header (hum_header CPT)
+	hum_seed_cpt_if_empty(
+		'hum_header',
+		array(
+			array(
+				'title' => 'Main Site Header',
+				'meta'  => array(
+					'header_logo'             => 'ASSET:assets/images/logo-transparent.png',
+					'header_favicon'          => 'ASSET:assets/images/favicon.png',
+					'header_brand_main'       => 'HUSTLE UR',
+					'header_brand_highlight'  => 'MUSCLE',
+					'header_brand_subtext'    => 'BY SAGAR SOMA',
+					'header_brand_url'        => '',
+					'header_instagram_url'    => 'https://www.instagram.com/ssagarsomahustleurmuscle/',
+					'header_facebook_url'     => 'https://www.facebook.com/hustleurmuscle/',
+					'header_show_search'      => 1,
+					'header_show_bmi'         => 1,
+					'header_cta_text'         => 'GET STARTED',
+					'header_cta_url'          => '',
+					'header_show_quick_tools' => 1,
+					'header_show_whatsapp'    => 1,
+					'header_whatsapp_url'     => 'https://wa.me/',
+					'header_contact_url'      => '',
+					'header_show_back_to_top' => 1,
+				),
+			),
+		)
+	);
+
+	// 10. Pre-fill default ACF page fields (non-destructive: only sets if empty)
 	if ( isset( $page_ids['home'] ) ) {
 		$home_defaults = array(
 			'site_phone'          => '9948660025',

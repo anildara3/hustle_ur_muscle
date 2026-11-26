@@ -1,6 +1,6 @@
 <?php
 /**
- * Custom Post Types Registration (Hero Slides, Programs, Testimonials, FAQs, Trainers)
+ * Custom Post Types Registration (Hero Slides, Programs, Testimonials, FAQs, Trainers, Header, Footer)
  *
  * @package HustleUrMuscle
  */
@@ -64,13 +64,36 @@ function hum_register_custom_post_types() {
 			'has_archive' => false,
 			'slug'      => '',
 		),
+		'hum_header'      => array(
+			'singular'    => 'Header',
+			'plural'      => 'Headers',
+			'menu_name'   => 'Header',
+			'icon'        => 'dashicons-table-row-before',
+			'position'    => 26,
+			'supports'    => array( 'title', 'page-attributes' ),
+			'publicly'    => false,
+			'has_archive' => false,
+			'slug'        => '',
+		),
+		'hum_footer'      => array(
+			'singular'    => 'Footer',
+			'plural'      => 'Footers',
+			'menu_name'   => 'Footer',
+			'icon'        => 'dashicons-layout',
+			'position'    => 27,
+			'supports'    => array( 'title', 'page-attributes' ),
+			'publicly'    => false,
+			'has_archive' => false,
+			'slug'        => '',
+		),
 	);
 
 	foreach ( $post_types as $post_type => $cfg ) {
-		$labels = array(
+		$menu_name = isset( $cfg['menu_name'] ) ? $cfg['menu_name'] : $cfg['plural'];
+		$labels    = array(
 			'name'               => $cfg['plural'],
 			'singular_name'      => $cfg['singular'],
-			'menu_name'          => $cfg['plural'],
+			'menu_name'          => $menu_name,
 			'name_admin_bar'     => $cfg['singular'],
 			'add_new'            => 'Add New',
 			'add_new_item'       => 'Add New ' . $cfg['singular'],

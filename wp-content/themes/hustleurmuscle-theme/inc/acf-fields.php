@@ -443,5 +443,110 @@ function hum_register_acf_field_groups() {
 			),
 		)
 	);
+
+	// 10. FOOTER (CPT: hum_footer)
+	acf_add_local_field_group(
+		array(
+			'key'      => 'group_hum_footer',
+			'title'    => 'Footer Content & Links (Most recent / lowest Order published Footer is active site-wide)',
+			'fields'   => array(
+				hum_acf_field( 'field_hum_ft_tab_banner', 'Top CTA Banner', '', 'tab' ),
+				hum_acf_field( 'field_hum_ft_logo', 'Footer Brand Logo', 'footer_logo', 'image', array( 'instructions' => 'Leave empty to use Global Header/Footer Logo or default theme logo.' ) ),
+				hum_acf_field( 'field_hum_ft_heading', 'Banner Heading', 'footer_banner_heading', 'textarea', array( 'rows' => 2, 'default_value' => "JOIN HUSTLE UR MUSCLE TO\nSTART A NEW LIFE", 'instructions' => 'Use a new line for the line break.' ) ),
+				hum_acf_field( 'field_hum_ft_founder_lbl', 'Founder Prefix Label', 'footer_founder_label', 'text', array( 'default_value' => 'HEAD COACH & FOUNDER:' ) ),
+				hum_acf_field( 'field_hum_ft_founder_name', 'Founder Highlighted Name', 'footer_founder_name', 'text', array( 'default_value' => 'SAGAR SOMA' ) ),
+				hum_acf_field( 'field_hum_ft_cta_text', 'CTA Button Text', 'footer_cta_text', 'text', array( 'default_value' => 'JOIN NOW' ) ),
+				hum_acf_field( 'field_hum_ft_cta_url', 'CTA Button Custom URL (optional)', 'footer_cta_url', 'text', array( 'instructions' => 'Leave empty to open the Booking Consultation modal.' ) ),
+
+				hum_acf_field( 'field_hum_ft_tab_about', 'About & Contact Info', '', 'tab' ),
+				hum_acf_field( 'field_hum_ft_about_title', 'Column Title', 'footer_about_title', 'text', array( 'default_value' => 'ABOUT HUSTLE UR MUSCLE' ) ),
+				hum_acf_field( 'field_hum_ft_about_text', 'About Description', 'footer_about_text', 'textarea', array( 'rows' => 3, 'default_value' => 'Hustle Ur Muscle, founded by Coach Sagar Soma, is dedicated to scientific strength conditioning, body transformation, and empowering individuals with peak athletic discipline.' ) ),
+				hum_acf_field( 'field_hum_ft_email', 'Email Address', 'footer_email', 'email', array( 'default_value' => 'info@hustleurmuscle.in' ) ),
+				hum_acf_field( 'field_hum_ft_phone', 'Phone Number', 'footer_phone', 'text', array( 'default_value' => '9948660025' ) ),
+				hum_acf_field( 'field_hum_ft_location', 'Club / Location Label', 'footer_location', 'text', array( 'default_value' => 'Hustle Ur Muscle Training Club' ) ),
+
+				hum_acf_field( 'field_hum_ft_tab_links', 'Social & Quick Links', '', 'tab' ),
+				hum_acf_field( 'field_hum_ft_social_title', 'Social Column Title', 'footer_social_title', 'text', array( 'default_value' => 'SOCIAL' ) ),
+				hum_acf_field( 'field_hum_ft_fb', 'Facebook URL', 'footer_facebook_url', 'url', array( 'default_value' => 'https://www.facebook.com/hustleurmuscle/' ) ),
+				hum_acf_field( 'field_hum_ft_ig', 'Instagram URL', 'footer_instagram_url', 'url', array( 'default_value' => 'https://www.instagram.com/ssagarsomahustleurmuscle/' ) ),
+				hum_acf_field( 'field_hum_ft_tw', 'Twitter / X URL', 'footer_twitter_url', 'url', array( 'default_value' => 'https://twitter.com' ) ),
+				hum_acf_field( 'field_hum_ft_yt', 'YouTube URL', 'footer_youtube_url', 'url', array( 'default_value' => 'https://youtube.com' ) ),
+				hum_acf_field( 'field_hum_ft_links_title', 'Quick Links Column Title', 'footer_links_title', 'text', array( 'default_value' => 'QUICK LINKS' ) ),
+				hum_acf_field( 'field_hum_ft_quick_links', 'Quick Links (1 per line: Label | URL)', 'footer_quick_links', 'textarea', array( 'rows' => 6, 'instructions' => 'Format: Label | /path/ or https://... Leave empty to use the WordPress "Footer Quick Links" menu.' ) ),
+
+				hum_acf_field( 'field_hum_ft_tab_ig', 'Instagram Grid (6)', '', 'tab' ),
+				hum_acf_field( 'field_hum_ft_ig_title', 'Instagram Column Title', 'footer_instagram_title', 'text', array( 'default_value' => 'INSTAGRAM' ) ),
+				hum_acf_field( 'field_hum_ft_r1', 'Reel 1 URL', 'footer_reel_1', 'url' ),
+				hum_acf_field( 'field_hum_ft_r1_img', 'Reel 1 Thumbnail', 'footer_reel_1_img', 'image' ),
+				hum_acf_field( 'field_hum_ft_r2', 'Reel 2 URL', 'footer_reel_2', 'url' ),
+				hum_acf_field( 'field_hum_ft_r2_img', 'Reel 2 Thumbnail', 'footer_reel_2_img', 'image' ),
+				hum_acf_field( 'field_hum_ft_r3', 'Reel 3 URL', 'footer_reel_3', 'url' ),
+				hum_acf_field( 'field_hum_ft_r3_img', 'Reel 3 Thumbnail', 'footer_reel_3_img', 'image' ),
+				hum_acf_field( 'field_hum_ft_r4', 'Reel 4 URL', 'footer_reel_4', 'url' ),
+				hum_acf_field( 'field_hum_ft_r4_img', 'Reel 4 Thumbnail', 'footer_reel_4_img', 'image' ),
+				hum_acf_field( 'field_hum_ft_r5', 'Reel 5 URL', 'footer_reel_5', 'url' ),
+				hum_acf_field( 'field_hum_ft_r5_img', 'Reel 5 Thumbnail', 'footer_reel_5_img', 'image' ),
+				hum_acf_field( 'field_hum_ft_r6', 'Reel 6 URL', 'footer_reel_6', 'url' ),
+				hum_acf_field( 'field_hum_ft_r6_img', 'Reel 6 Thumbnail', 'footer_reel_6_img', 'image' ),
+
+				hum_acf_field( 'field_hum_ft_tab_bottom', 'Bottom Copyright & Legal', '', 'tab' ),
+				hum_acf_field( 'field_hum_ft_copyright', 'Copyright Text', 'footer_copyright', 'text', array( 'default_value' => 'Hustle Ur Muscle © {year}. All rights reserved. Directed by Coach Sagar Soma.', 'instructions' => 'Use {year} to insert the current year automatically.' ) ),
+				hum_acf_field( 'field_hum_ft_priv_lbl', 'Privacy Link Label', 'footer_privacy_label', 'text', array( 'default_value' => 'Privacy Policy' ) ),
+				hum_acf_field( 'field_hum_ft_priv_url', 'Privacy Link Custom URL (optional)', 'footer_privacy_url', 'text', array( 'instructions' => 'Leave empty to link to the Privacy Policy page automatically.' ) ),
+				hum_acf_field( 'field_hum_ft_terms_lbl', 'Terms Link Label', 'footer_terms_label', 'text', array( 'default_value' => 'Terms & Conditions' ) ),
+				hum_acf_field( 'field_hum_ft_terms_url', 'Terms Link Custom URL (optional)', 'footer_terms_url', 'text', array( 'instructions' => 'Leave empty to link to the Terms & Conditions page automatically.' ) ),
+			),
+			'location' => array(
+				array(
+					array(
+						'param'    => 'post_type',
+						'operator' => '==',
+						'value'    => 'hum_footer',
+					),
+				),
+			),
+		)
+	);
+
+	// 11. HEADER (CPT: hum_header)
+	acf_add_local_field_group(
+		array(
+			'key'      => 'group_hum_header',
+			'title'    => 'Header Content & Actions (Most recent / lowest Order published Header is active; Primary Menu is managed in Appearance → Menus)',
+			'fields'   => array(
+				hum_acf_field( 'field_hum_hd_tab_brand', 'Brand & Logo', '', 'tab' ),
+				hum_acf_field( 'field_hum_hd_logo', 'Header Logo Image', 'header_logo', 'image', array( 'instructions' => 'Leave empty to use Global Header/Footer Logo or default theme logo.' ) ),
+				hum_acf_field( 'field_hum_hd_favicon', 'Site Favicon Override', 'header_favicon', 'image', array( 'instructions' => 'Leave empty to use default favicon.png.' ) ),
+				hum_acf_field( 'field_hum_hd_brand_main', 'Brand Title (Main)', 'header_brand_main', 'text', array( 'default_value' => 'HUSTLE UR' ) ),
+				hum_acf_field( 'field_hum_hd_brand_hl', 'Brand Title (Highlighted)', 'header_brand_highlight', 'text', array( 'default_value' => 'MUSCLE' ) ),
+				hum_acf_field( 'field_hum_hd_brand_sub', 'Brand Subtext', 'header_brand_subtext', 'text', array( 'default_value' => 'BY SAGAR SOMA' ) ),
+				hum_acf_field( 'field_hum_hd_brand_url', 'Brand Link Custom URL (optional)', 'header_brand_url', 'text', array( 'instructions' => 'Leave empty for default (#hero on Home, Home URL on inner pages).' ) ),
+
+				hum_acf_field( 'field_hum_hd_tab_actions', 'Navbar Actions & CTA', '', 'tab' ),
+				hum_acf_field( 'field_hum_hd_ig', 'Instagram URL', 'header_instagram_url', 'url', array( 'default_value' => 'https://www.instagram.com/ssagarsomahustleurmuscle/', 'instructions' => 'Clear to hide Instagram icon in navbar and side quick tools.' ) ),
+				hum_acf_field( 'field_hum_hd_fb', 'Facebook URL', 'header_facebook_url', 'url', array( 'default_value' => 'https://www.facebook.com/hustleurmuscle/', 'instructions' => 'Clear to hide Facebook icon in navbar and side quick tools.' ) ),
+				hum_acf_field( 'field_hum_hd_search', 'Show Search Button?', 'header_show_search', 'true_false', array( 'ui' => 1, 'default_value' => 1 ) ),
+				hum_acf_field( 'field_hum_hd_bmi', 'Show BMI Calculator Button?', 'header_show_bmi', 'true_false', array( 'ui' => 1, 'default_value' => 1 ) ),
+				hum_acf_field( 'field_hum_hd_cta_text', 'CTA Button Text', 'header_cta_text', 'text', array( 'default_value' => 'GET STARTED' ) ),
+				hum_acf_field( 'field_hum_hd_cta_url', 'CTA Button Custom URL (optional)', 'header_cta_url', 'text', array( 'instructions' => 'Leave empty to open the Booking Consultation modal.' ) ),
+
+				hum_acf_field( 'field_hum_hd_tab_float', 'Floating Tools & WhatsApp', '', 'tab' ),
+				hum_acf_field( 'field_hum_hd_quick', 'Show Side Quick Tools Bar?', 'header_show_quick_tools', 'true_false', array( 'ui' => 1, 'default_value' => 1 ) ),
+				hum_acf_field( 'field_hum_hd_wa_show', 'Show Floating WhatsApp Button?', 'header_show_whatsapp', 'true_false', array( 'ui' => 1, 'default_value' => 1 ) ),
+				hum_acf_field( 'field_hum_hd_wa_url', 'WhatsApp URL', 'header_whatsapp_url', 'url', array( 'default_value' => 'https://wa.me/' ) ),
+				hum_acf_field( 'field_hum_hd_contact', 'Quick Tools Contact URL (optional)', 'header_contact_url', 'text', array( 'instructions' => 'Leave empty for default (#contact on Home, Contact page on inner pages).' ) ),
+				hum_acf_field( 'field_hum_hd_btt', 'Show Back to Top Button?', 'header_show_back_to_top', 'true_false', array( 'ui' => 1, 'default_value' => 1 ) ),
+			),
+			'location' => array(
+				array(
+					array(
+						'param'    => 'post_type',
+						'operator' => '==',
+						'value'    => 'hum_header',
+					),
+				),
+			),
+		)
+	);
 }
 add_action( 'acf/init', 'hum_register_acf_field_groups' );

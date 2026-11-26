@@ -193,3 +193,93 @@ function hustleurmuscle_reading_time( $post_id = null ) {
 	$minutes    = max( 1, (int) ceil( $word_count / 200 ) );
 	return $minutes . ' MIN READ';
 }
+
+/**
+ * Get the active published CPT post ID (cached per request, lowest menu_order then latest).
+ */
+function hum_get_active_cpt_id( $post_type ) {
+	static $cache = array();
+	if ( isset( $cache[ $post_type ] ) ) {
+		return $cache[ $post_type ];
+	}
+
+	$posts = get_posts(
+		array(
+			'post_type'      => $post_type,
+			'post_status'    => 'publish',
+			'posts_per_page' => 1,
+			'orderby'        => array(
+				'menu_order' => 'ASC',
+				'date'       => 'DESC',
+			),
+			'fields'         => 'ids',
+		)
+	);
+
+	$cache[ $post_type ] = ! empty( $posts ) ? (int) $posts[0] : 0;
+	return $cache[ $post_type ];
+}
+
+/**
+ * Get the active published Header CPT post ID.
+ */
+function hum_get_active_header_id() {
+	return hum_get_active_cpt_id( 'hum_header' );
+}
+
+/**
+ * Get the active published Footer CPT post ID.
+ */
+function hum_get_active_footer_id() {
+	return hum_get_active_cpt_id( 'hum_footer' );
+}
+
+/**
+ * Retrieve an optional CPT field (respects intentional blank values once set on the CPT).
+ */
+function hum_get_cpt_optional_field( $selector, $post_id, $fallback = '' ) {
+	if ( $post_id > 0 && metadata_exists( 'post', $post_id, $selector ) ) {
+		return hum_get_field( $selector, $post_id, '' );
+	}
+	return $fallback;
+}
+
+/**
+ * Backward-compatible wrapper for optional Footer CPT fields.
+ */
+function hum_get_footer_optional_field( $selector, $footer_id, $fallback = '' ) {
+	return hum_get_cpt_optional_field( $selector, $footer_id, $fallback );
+}
+
+/**
+ * Resolve relative paths (e.g. /about/) against home_url(), keeping anchors and full URLs intact.
+ */
+function hum_resolve_theme_url( $raw_url ) {
+	$url = trim( (string) $raw_url );
+	if ( '' === $url ) {
+		return '';
+	}
+	if ( 0 === strpos( $url, '/' ) && 0 !== strpos( $url, '//' ) ) {
+		return home_url( $url );
+	}
+	return $url;
+}
+
+/**
+ * Parse "Label | URL" lines from the Footer Quick Links textarea.
+ */
+function hum_parse_footer_links( $raw_text ) {
+	$parsed = array();
+	foreach ( hum_split_lines( $raw_text ) as $line ) {
+		$parts = explode( '|', $line, 2 );
+		$label = trim( $parts[0] );
+		$url   = isset( $parts[1] ) ? hum_resolve_theme_url( $parts[1] ) : home_url( '/' );
+		if ( '' !== $label && '' !== $url ) {
+			$parsed[] = array(
+				'label' => $label,
+				'url'   => $url,
+			);
+		}
+	}
+	return $parsed;
+}
