@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'HUM_THEME_VERSION', '1.1.2' );
+define( 'HUM_THEME_VERSION', '1.1.3' );
 
 require_once get_template_directory() . '/inc/helpers.php';
 require_once get_template_directory() . '/inc/post-types.php';
@@ -274,6 +274,11 @@ function hustleurmuscle_primary_menu_fallback() {
 			'active' => is_page_template( array( 'page-programs.php', 'page-program-single.php' ) ) || is_singular( 'hum_program' ) || is_page( array( 'programs', 'program-single' ) ),
 		),
 		array(
+			'label'  => 'GALLERY',
+			'url'    => hustleurmuscle_get_page_url( array( 'gallery' ) ),
+			'active' => is_page_template( 'page-gallery.php' ) || is_page( array( 'gallery' ) ),
+		),
+		array(
 			'label'  => 'FAQS',
 			'url'    => hustleurmuscle_get_page_url( array( 'faqs', 'faq' ) ),
 			'active' => is_page_template( 'page-faqs.php' ) || is_page( array( 'faqs', 'faq' ) ),
@@ -306,6 +311,7 @@ function hustleurmuscle_footer_menu_fallback() {
 		'Home'     => home_url( '/' ),
 		'About Us' => hustleurmuscle_get_page_url( array( 'about', 'about-us' ) ),
 		'Programs' => hustleurmuscle_get_page_url( array( 'programs' ) ),
+		'Gallery'  => hustleurmuscle_get_page_url( array( 'gallery' ) ),
 		'FAQs'     => hustleurmuscle_get_page_url( array( 'faqs', 'faq' ) ),
 		'Blog'     => hustleurmuscle_get_page_url( array( 'blog' ) ),
 		'Contact'  => hustleurmuscle_get_page_url( array( 'contact', 'contacts' ) ),

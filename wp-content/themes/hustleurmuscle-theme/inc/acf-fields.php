@@ -548,5 +548,121 @@ function hum_register_acf_field_groups() {
 			),
 		)
 	);
+
+	// 12. GALLERY ITEMS (CPT: hum_gallery)
+	acf_add_local_field_group(
+		array(
+			'key'      => 'group_hum_gallery_item',
+			'title'    => 'Gallery Media Details (Select Category on the Right)',
+			'fields'   => array(
+				hum_acf_field(
+					'field_hum_gal_type',
+					'Media Type',
+					'gallery_media_type',
+					'select',
+					array(
+						'choices'       => array(
+							'photo' => 'Photo',
+							'video' => 'Video',
+						),
+						'default_value' => 'photo',
+						'instructions'  => 'Choose whether this gallery entry displays a Photo or a Video.',
+					)
+				),
+				hum_acf_field(
+					'field_hum_gal_photo',
+					'Photo / Video Cover Image',
+					'gallery_photo',
+					'image',
+					array(
+						'instructions' => 'Upload a Photo (or Cover Thumbnail for a Video). You can also use Featured Image on the right.',
+					)
+				),
+				hum_acf_field(
+					'field_hum_gal_video_file',
+					'Upload Video File (MP4 / WebM / MOV)',
+					'gallery_video_file',
+					'file',
+					array(
+						'return_format'     => 'url',
+						'mime_types'        => 'mp4,webm,mov,m4v',
+						'instructions'      => 'Upload a video directly from your device (optional; overrides Video URL if set).',
+						'conditional_logic' => array(
+							array(
+								array(
+									'field'    => 'field_hum_gal_type',
+									'operator' => '==',
+									'value'    => 'video',
+								),
+							),
+						),
+					)
+				),
+				hum_acf_field(
+					'field_hum_gal_video_url',
+					'Or Video URL (YouTube / Vimeo / Instagram / MP4)',
+					'gallery_video_url',
+					'url',
+					array(
+						'instructions'      => 'Paste a YouTube, Shorts, Vimeo, Instagram Reel, or direct MP4 URL.',
+						'conditional_logic' => array(
+							array(
+								array(
+									'field'    => 'field_hum_gal_type',
+									'operator' => '==',
+									'value'    => 'video',
+								),
+							),
+						),
+					)
+				),
+				hum_acf_field(
+					'field_hum_gal_caption',
+					'Short Caption (optional)',
+					'gallery_caption',
+					'textarea',
+					array(
+						'rows' => 2,
+					)
+				),
+			),
+			'location' => array(
+				array(
+					array(
+						'param'    => 'post_type',
+						'operator' => '==',
+						'value'    => 'hum_gallery',
+					),
+				),
+			),
+		)
+	);
+
+	// 13. GALLERY PAGE (page-gallery.php)
+	acf_add_local_field_group(
+		array(
+			'key'      => 'group_hum_gallery_page',
+			'title'    => 'Gallery Page Settings',
+			'fields'   => array(
+				hum_acf_field( 'field_hum_galp_btag', 'Banner Tag', 'gallery_banner_tag', 'text', array( 'default_value' => 'TRAINING & NUTRITION SHOWCASE' ) ),
+				hum_acf_field( 'field_hum_galp_btitle', 'Banner Title', 'gallery_banner_title', 'text', array( 'default_value' => 'HUSTLE UR MUSCLE GALLERY' ) ),
+				hum_acf_field( 'field_hum_galp_bdesc', 'Banner Description', 'gallery_banner_desc', 'textarea', array( 'rows' => 2 ) ),
+				hum_acf_field( 'field_hum_galp_bimg', 'Banner Background Image', 'gallery_banner_img', 'image' ),
+				hum_acf_field( 'field_hum_galp_gtag', 'Section Tag', 'gallery_grid_tag', 'text', array( 'default_value' => 'PHOTOS & VIDEOS' ) ),
+				hum_acf_field( 'field_hum_galp_gtitle', 'Section Title', 'gallery_grid_title', 'text', array( 'default_value' => 'INSIDE THE HUSTLE UR MUSCLE ZONE' ) ),
+				hum_acf_field( 'field_hum_galp_ctat', 'Bottom CTA Title', 'gallery_cta_title', 'text', array( 'default_value' => 'READY TO START YOUR OWN TRANSFORMATION?' ) ),
+				hum_acf_field( 'field_hum_galp_ctad', 'Bottom CTA Description', 'gallery_cta_desc', 'textarea', array( 'rows' => 2 ) ),
+			),
+			'location' => array(
+				array(
+					array(
+						'param'    => 'page_template',
+						'operator' => '==',
+						'value'    => 'page-gallery.php',
+					),
+				),
+			),
+		)
+	);
 }
 add_action( 'acf/init', 'hum_register_acf_field_groups' );

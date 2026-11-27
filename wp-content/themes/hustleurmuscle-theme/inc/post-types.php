@@ -1,6 +1,6 @@
 <?php
 /**
- * Custom Post Types Registration (Hero Slides, Programs, Testimonials, FAQs, Trainers, Header, Footer)
+ * Custom Post Types Registration (Hero Slides, Programs, Testimonials, FAQs, Trainers, Gallery, Header, Footer)
  *
  * @package HustleUrMuscle
  */
@@ -64,12 +64,23 @@ function hum_register_custom_post_types() {
 			'has_archive' => false,
 			'slug'      => '',
 		),
+		'hum_gallery'     => array(
+			'singular'    => 'Gallery Item',
+			'plural'      => 'Gallery Items',
+			'menu_name'   => 'Gallery',
+			'icon'        => 'dashicons-format-gallery',
+			'position'    => 26,
+			'supports'    => array( 'title', 'thumbnail', 'page-attributes' ),
+			'publicly'    => false,
+			'has_archive' => false,
+			'slug'        => '',
+		),
 		'hum_header'      => array(
 			'singular'    => 'Header',
 			'plural'      => 'Headers',
 			'menu_name'   => 'Header',
 			'icon'        => 'dashicons-table-row-before',
-			'position'    => 26,
+			'position'    => 27,
 			'supports'    => array( 'title', 'page-attributes' ),
 			'publicly'    => false,
 			'has_archive' => false,
@@ -80,7 +91,7 @@ function hum_register_custom_post_types() {
 			'plural'      => 'Footers',
 			'menu_name'   => 'Footer',
 			'icon'        => 'dashicons-layout',
-			'position'    => 27,
+			'position'    => 28,
 			'supports'    => array( 'title', 'page-attributes' ),
 			'publicly'    => false,
 			'has_archive' => false,
@@ -125,5 +136,28 @@ function hum_register_custom_post_types() {
 
 		register_post_type( $post_type, $args );
 	}
+
+	register_taxonomy(
+		'hum_gallery_cat',
+		array( 'hum_gallery' ),
+		array(
+			'labels'            => array(
+				'name'          => 'Gallery Categories',
+				'singular_name' => 'Gallery Category',
+				'menu_name'     => 'Categories',
+				'all_items'     => 'All Categories',
+				'edit_item'     => 'Edit Category',
+				'add_new_item'  => 'Add New Gallery Category',
+				'new_item_name' => 'New Gallery Category Name',
+				'search_items'  => 'Search Categories',
+			),
+			'hierarchical'      => true,
+			'public'            => false,
+			'show_ui'           => true,
+			'show_admin_column' => true,
+			'show_in_rest'      => true,
+			'rewrite'           => false,
+		)
+	);
 }
 add_action( 'init', 'hum_register_custom_post_types' );

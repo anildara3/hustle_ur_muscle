@@ -152,6 +152,7 @@ function hustleurmuscle_get_page_url( $slugs, $fallback_path = '' ) {
 		'about'            => 'page-about.php',
 		'programs'         => 'page-programs.php',
 		'program-single'   => 'page-program-single.php',
+		'gallery'          => 'page-gallery.php',
 		'faqs'             => 'page-faqs.php',
 		'contact'          => 'page-contact.php',
 		'privacy-policy'   => 'page-privacy-policy.php',
@@ -282,4 +283,65 @@ function hum_parse_footer_links( $raw_text ) {
 		}
 	}
 	return $parsed;
+}
+
+/**
+ * Safely resolve an ACF file field (array, ID, or URL) to a file URL.
+ */
+function hum_get_file_url( $selector, $post_id = false ) {
+	$val = hum_get_field( $selector, $post_id, '' );
+	if ( is_array( $val ) && ! empty( $val['url'] ) ) {
+		return $val['url'];
+	}
+	if ( is_numeric( $val ) && (int) $val > 0 ) {
+		$url = wp_get_attachment_url( (int) $val );
+		return $url ? $url : '';
+	}
+	return ( is_string( $val ) && '' !== trim( $val ) ) ? trim( $val ) : '';
+}
+
+/**
+ * Parse a video URL or media file into an embed type (mp4, iframe, or external).
+ */
+function hum_parse_video_embed( $raw_url ) {
+	$url = trim( (string) $raw_url );
+	if ( '' === $url ) {
+		return array(
+			'type'            => 'none',
+			'src'             => '',
+			'poster_fallback' => '',
+		);
+	}
+
+	$path = (string) wp_parse_url( $url, PHP_URL_PATH );
+	$ext  = strtolower( pathinfo( $path, PATHINFO_EXTENSION ) );
+	if ( in_array( $ext, array( 'mp4', 'webm', 'mov', 'm4v', 'ogg' ), true ) ) {
+		return array(
+			'type'            => 'mp4',
+			'src'             => $url,
+			'poster_fallback' => '',
+		);
+	}
+
+	if ( preg_match( '~(?:youtube\.com/(?:watch\?v=|embed/|shorts/)|youtu\.be/)([A-Za-z0-9_-]{6,})~', $url, $m ) ) {
+		return array(
+			'type'            => 'iframe',
+			'src'             => 'https://www.youtube.com/embed/' . $m[1] . '?autoplay=1&rel=0',
+			'poster_fallback' => 'https://img.youtube.com/vi/' . $m[1] . '/hqdefault.jpg',
+		);
+	}
+
+	if ( preg_match( '~vimeo\.com/(?:video/)?(\d+)~', $url, $m ) ) {
+		return array(
+			'type'            => 'iframe',
+			'src'             => 'https://player.vimeo.com/video/' . $m[1] . '?autoplay=1',
+			'poster_fallback' => '',
+		);
+	}
+
+	return array(
+		'type'            => 'external',
+		'src'             => $url,
+		'poster_fallback' => '',
+	);
 }

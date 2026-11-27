@@ -11,7 +11,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'HUM_SEED_VERSION', '1.3.0' );
+define( 'HUM_SEED_VERSION', '1.4.0' );
 
 /**
  * Helper: attach a theme image file into the WP Media Library once and return attachment ID.
@@ -108,6 +108,12 @@ function hum_seed_cpt_if_empty( $post_type, $items ) {
 				}
 			}
 		}
+
+		if ( ! empty( $item['terms'] ) && is_array( $item['terms'] ) ) {
+			foreach ( $item['terms'] as $tax => $slugs ) {
+				wp_set_object_terms( $post_id, $slugs, $tax );
+			}
+		}
 	}
 }
 
@@ -121,6 +127,7 @@ function hum_run_full_seed() {
 		'about'            => array( 'title' => 'About Us', 'template' => 'page-about.php' ),
 		'programs'         => array( 'title' => 'Programs', 'template' => 'page-programs.php' ),
 		'program-single'   => array( 'title' => 'Strength & Hypertrophy', 'template' => 'page-program-single.php' ),
+		'gallery'          => array( 'title' => 'Gallery', 'template' => 'page-gallery.php' ),
 		'faqs'             => array( 'title' => 'FAQs', 'template' => 'page-faqs.php' ),
 		'blog'             => array( 'title' => 'Blog', 'template' => '' ),
 		'contact'          => array( 'title' => 'Contact', 'template' => 'page-contact.php' ),
@@ -508,7 +515,7 @@ function hum_run_full_seed() {
 					'footer_twitter_url'     => 'https://twitter.com',
 					'footer_youtube_url'     => 'https://youtube.com',
 					'footer_links_title'     => 'QUICK LINKS',
-					'footer_quick_links'     => "Home | /\nAbout Us | /about/\nPrograms | /programs/\nFAQs | /faqs/\nBlog | /blog/\nContact | /contact/",
+					'footer_quick_links'     => "Home | /\nAbout Us | /about/\nPrograms | /programs/\nGallery | /gallery/\nFAQs | /faqs/\nBlog | /blog/\nContact | /contact/",
 					'footer_instagram_title' => 'INSTAGRAM',
 					'footer_reel_1'          => 'https://www.instagram.com/reel/DZozDKoi8xf/?hvrq=bzN0cTdjYjM2a2d4',
 					'footer_reel_1_img'      => 'ASSET:assets/images/hero-bg.jpg',
@@ -561,7 +568,82 @@ function hum_run_full_seed() {
 		)
 	);
 
-	// 10. Pre-fill default ACF page fields (non-destructive: only sets if empty)
+	// 10. Seed Gallery Categories & Starter Items (hum_gallery CPT + hum_gallery_cat)
+	$gallery_cats = array(
+		'workout'           => 'Workout',
+		'group-training'    => 'Group Training',
+		'personal-training' => 'Personal (1-on-1) Training',
+		'massage-training'  => 'Massage Training',
+		'diet-food'         => 'Diet Food',
+	);
+	foreach ( $gallery_cats as $cat_slug => $cat_name ) {
+		if ( ! term_exists( $cat_slug, 'hum_gallery_cat' ) ) {
+			wp_insert_term( $cat_name, 'hum_gallery_cat', array( 'slug' => $cat_slug ) );
+		}
+	}
+
+	hum_seed_cpt_if_empty(
+		'hum_gallery',
+		array(
+			array(
+				'title'     => 'High-Intensity Barbell & Strength Workout',
+				'thumbnail' => 'assets/images/banner-gym.jpg',
+				'terms'     => array( 'hum_gallery_cat' => array( 'workout' ) ),
+				'meta'      => array(
+					'gallery_media_type' => 'photo',
+					'gallery_caption'    => 'Progressive overload barbell and compound resistance work inside Hustle Ur Muscle.',
+				),
+			),
+			array(
+				'title'     => 'Group Conditioning & Team Circuit',
+				'thumbnail' => 'assets/images/blog-3.jpg',
+				'terms'     => array( 'hum_gallery_cat' => array( 'group-training' ) ),
+				'meta'      => array(
+					'gallery_media_type' => 'photo',
+					'gallery_caption'    => 'High-energy group metabolic conditioning and battle ropes sessions.',
+				),
+			),
+			array(
+				'title'     => '1-on-1 Private Coaching With Sagar Soma',
+				'thumbnail' => 'assets/images/sagar-soma.png',
+				'terms'     => array( 'hum_gallery_cat' => array( 'personal-training' ) ),
+				'meta'      => array(
+					'gallery_media_type' => 'photo',
+					'gallery_caption'    => 'Direct biomechanical assessment and personalized form coaching with Head Coach Sagar Soma.',
+				),
+			),
+			array(
+				'title'     => 'Recovery, Stretching & Massage Training',
+				'thumbnail' => 'assets/images/blog-5.jpg',
+				'terms'     => array( 'hum_gallery_cat' => array( 'massage-training' ) ),
+				'meta'      => array(
+					'gallery_media_type' => 'photo',
+					'gallery_caption'    => 'Guided myofascial release, mobility therapy, and post-lift muscular recovery.',
+				),
+			),
+			array(
+				'title'     => 'Clean Macro Nutrition & Diet Food',
+				'thumbnail' => 'assets/images/blog-1.jpg',
+				'terms'     => array( 'hum_gallery_cat' => array( 'diet-food' ) ),
+				'meta'      => array(
+					'gallery_media_type' => 'photo',
+					'gallery_caption'    => 'Balanced high-protein meals and sustainable macro meal prep engineered for lean gains.',
+				),
+			),
+			array(
+				'title'     => 'Athletic Training Video Showcase',
+				'thumbnail' => 'assets/images/hero-bg.jpg',
+				'terms'     => array( 'hum_gallery_cat' => array( 'workout' ) ),
+				'meta'      => array(
+					'gallery_media_type' => 'video',
+					'gallery_video_url'  => 'https://www.instagram.com/reel/DZozDKoi8xf/?hvrq=bzN0cTdjYjM2a2d4',
+					'gallery_caption'    => 'Replace with any YouTube, Instagram, or MP4 upload in Dashboard → Gallery.',
+				),
+			),
+		)
+	);
+
+	// 11. Pre-fill default ACF page fields (non-destructive: only sets if empty)
 	if ( isset( $page_ids['home'] ) ) {
 		$home_defaults = array(
 			'site_phone'          => '9948660025',
