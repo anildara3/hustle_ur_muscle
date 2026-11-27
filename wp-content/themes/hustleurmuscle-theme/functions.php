@@ -9,7 +9,7 @@ if ( ! defined( 'ABSPATH' ) ) {
 	exit;
 }
 
-define( 'HUM_THEME_VERSION', '1.1.1' );
+define( 'HUM_THEME_VERSION', '1.1.2' );
 
 require_once get_template_directory() . '/inc/helpers.php';
 require_once get_template_directory() . '/inc/post-types.php';

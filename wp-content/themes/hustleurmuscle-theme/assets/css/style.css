@@ -1882,7 +1882,7 @@ select.form-fitness-control option {
   margin-bottom: 4px;
 }
 
-.coach-title-wrap span {
+.coach-title-wrap > span {
   color: var(--color-primary);
   font-weight: 600;
   font-size: 0.88rem;
